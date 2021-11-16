@@ -6,13 +6,13 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 19:52:06 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/10/27 16:10:28 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/16 17:58:54 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_word_count(char const *s, char c)
+static int	ft_word_count(char const *s, char c)
 {
 	int	w;
 	int	i;
@@ -35,12 +35,13 @@ static int		ft_word_count(char const *s, char c)
 	return (w);
 }
 
-static char		**ft_allocopy_word(char **arr, char const *s, int j, int len)
+static char	**ft_allocopy_word(char **arr, char const *s, int j, int len)
 {
-	int k;
-	int l;
+	int	k;
+	int	l;
 
-	if (!(arr[0] = malloc(sizeof(char) * (len + 1))))
+	arr[0] = malloc(sizeof(char) * (len + 1));
+	if (!arr[0])
 		return (0);
 	k = j - len;
 	l = 0;
@@ -54,7 +55,7 @@ static char		**ft_allocopy_word(char **arr, char const *s, int j, int len)
 	return (arr);
 }
 
-static char		**ft_body_ft(char **arr, char const *s, int c, int w)
+static char	**ft_body_ft(char **arr, char const *s, int c, int w)
 {
 	int	i;
 	int	j;
@@ -82,7 +83,7 @@ static char		**ft_body_ft(char **arr, char const *s, int c, int w)
 	return (arr);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**arr;
 	int		w;
@@ -90,7 +91,8 @@ char			**ft_split(char const *s, char c)
 	if (!s)
 		return (0);
 	w = ft_word_count(s, c);
-	if (!(arr = malloc(sizeof(char *) * (w + 1))))
+	arr = malloc(sizeof(char *) * (w + 1));
+	if (!arr)
 		return (0);
 	ft_body_ft(arr, s, c, w);
 	return (arr);

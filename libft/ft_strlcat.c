@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 19:54:15 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/02/25 19:55:20 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/16 18:02:09 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t i;
-	size_t dstlen;
+	size_t	i;
+	size_t	dstlen;
 
 	dstlen = ft_strlen(dst);
 	if (dstsize <= dstlen)

@@ -6,17 +6,17 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 18:01:53 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/11/15 18:02:52 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/16 17:55:08 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_putendl_fd(char *s, int fd)
+void	ft_putendl_fd(char *s, int fd)
 {
-        if (s != NULL)
-        {
-                ft_putstr_fd(s, fd);
-                ft_putchar_fd('\n', fd);
-        }
+	if (s != NULL)
+	{
+		ft_putstr_fd(s, fd);
+		ft_putchar_fd('\n', fd);
+	}
 }

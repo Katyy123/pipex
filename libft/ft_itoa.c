@@ -6,13 +6,13 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 19:37:05 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/03/06 18:07:35 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/16 17:47:57 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_count_digits(int n)
+static int	ft_count_digits(int n)
 {
 	int		digits;
 
@@ -25,18 +25,19 @@ static int		ft_count_digits(int n)
 	return (digits);
 }
 
-static char		*ft_alloc(int digits)
+static char	*ft_alloc(int digits)
 {
 	char	*str;
 
 	if (!digits)
 		return (0);
-	if (!(str = malloc(sizeof(char) * (digits + 1))))
+	str = malloc(sizeof(char) * (digits + 1));
+	if (!str)
 		return (0);
 	return (str);
 }
 
-static char		*ft_putchars_in_str(char *str, int n, int digits, int sign)
+static char	*ft_putchars_in_str(char *str, int n, int digits, int sign)
 {
 	int	tmp;
 
@@ -61,7 +62,7 @@ static char		*ft_putchars_in_str(char *str, int n, int digits, int sign)
 	return (str);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*str;
 	int		digits;
@@ -74,7 +75,8 @@ char			*ft_itoa(int n)
 		digits++;
 		sign = -1;
 	}
-	if (!(str = ft_alloc(digits)))
+	str = ft_alloc(digits);
+	if (!str)
 		return (NULL);
 	str = ft_putchars_in_str(str, n, digits, sign);
 	return (str);

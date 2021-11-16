@@ -6,13 +6,13 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 19:58:49 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/03/04 17:14:51 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/16 18:09:59 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_check_beg(char const *s1, char const *set)
+static int	ft_check_beg(char const *s1, char const *set)
 {
 	int		beg;
 	int		j;
@@ -33,7 +33,7 @@ static int		ft_check_beg(char const *s1, char const *set)
 	return (beg);
 }
 
-static int		ft_check_end(char const *s1, char const *set)
+static int	ft_check_end(char const *s1, char const *set)
 {
 	int		end;
 	int		j;
@@ -54,7 +54,7 @@ static int		ft_check_end(char const *s1, char const *set)
 	return (end);
 }
 
-char			*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*str;
 	int		beg;
@@ -67,7 +67,8 @@ char			*ft_strtrim(char const *s1, char const *set)
 	end = ft_check_end(s1, set);
 	if ((end - beg) <= 0)
 		beg = end + 1;
-	if (!(str = malloc(sizeof(char const) * (end - beg + 2))))
+	str = malloc(sizeof(char const) * (end - beg + 2));
+	if (!str)
 		return (0);
 	i = 0;
 	while (beg <= end)

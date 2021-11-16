@@ -1,37 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 18:28:31 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/11/15 19:34:17 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/16 17:23:10 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void    execute(char *argv, char **envp)
+void	execute(char *paths, char **cmd_args, char **envp)
 {
-    char **paths;
-    char **cmd_args;
-    char *path;
-    char *cmd;
-    int i;
+	char	*path;
+	char	*part_path;
 
-    i = 0;
-    while (ft_strnstr(envp[i], "PATH", 4) == 0)
-        i++;
-    paths = ft_split(envp[i] + 5, ':');//proteggere split, mettendo perror e exit
-    cmd_args = ft_split(argv, ' ');
-    i = 0;
-    while (paths[i])
+	part_path = ft_strjoin(paths, "/");
+	if (!part_path)
+		error("Strjoin part_path");
+	path = ft_strjoin(part_path, cmd_args[0]);
+	if (!path)
+		error("Strjoin path");
+	free(part_path);
+	execve(path, cmd_args, envp);
+	free(path);
+}
+
+void	parsing(char *argv, char **envp)
 {
-    path = ft_strjoin(paths[i], "/");
-    cmd = ft_strjoin(path, cmd_args);
-    free(path);
-    //vedere se e dove aggiungere access
-    //aggiungere cose scritte sul quad dopo while nella pag della funzione parsing, a partire da execve
-    i++;
+	char	**cmd_args;
+	char	**paths;
+	int		i;
+
+	i = 0;
+	while (ft_strnstr(envp[i], "PATH", 4) == 0)
+		i++;
+	paths = ft_split(envp[i] + 5, ':');
+	if (!paths)
+		error("Split paths");
+	cmd_args = ft_split(argv, ' ');
+	if (!cmd_args)
+		error("Split cmd_args");
+	i = 0;
+	while (paths[i])
+	{
+		execute(paths[i], cmd_args, envp);
+		i++;
+	}
+	error("Execve");
 }

@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/25 19:34:18 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/11/16 17:15:07 by cfiliber         ###   ########.fr       */
+/*   Created: 2021/11/16 13:50:40 by cfiliber          #+#    #+#             */
+/*   Updated: 2021/11/16 16:59:31 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pipex.h"
 
-int	ft_isalpha(int c)
+void	error(const char *str)
 {
-	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
-		return (1);
-	else
-		return (0);
+	perror(str);
+	exit(EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 19:44:55 by cfiliber          #+#    #+#             */
-/*   Updated: 2021/03/06 18:07:04 by cfiliber         ###   ########.fr       */
+/*   Updated: 2021/11/16 17:54:19 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	{
 		while (i < len)
 		{
-			*(unsigned char*)(dst + i) = *(unsigned char*)(src + i);
+			*(unsigned char *)(dst + i) = *(unsigned char *)(src + i);
 			i++;
 		}
 	}
 	else
 	{
 		while (len--)
-			*(unsigned char*)(dst + len) = *(unsigned char*)(src + len);
+			*(unsigned char *)(dst + len) = *(unsigned char *)(src + len);
 	}
 	return (dst);
 }
